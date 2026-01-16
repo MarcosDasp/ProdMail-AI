@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from ai.classifier import classify_email
 
 app = Flask(__name__)
 
@@ -11,8 +12,10 @@ def analyze():
         data = request.json
         text = data.get("text", "")
 
+        category = classify_email(text)
+
         return jsonify({
-            "category": "Produtivo",
+            "category": category,
             "suggested_reply": "Obrigado pelo contato!"
         })
 

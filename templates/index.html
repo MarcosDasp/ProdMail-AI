@@ -17,6 +17,7 @@
     </header>  
     
     <main>
+        <!-- Container de Upload e Input de Texto -->
         <section class="container">
             <div class="p-4 border border-2 border-dark rounded-3 my-4">
 
@@ -28,8 +29,8 @@
                 </div>
 
                 <div class="form-floating">
-                    <textarea class="form-control border border-2 border-dark-subtle" rows="5" placeholder=" " id="textAreaEmail" style="height: 150px;" ></textarea>
-                    <label for="textAreaEmail" class="form-label"> <i class="bi bi-envelope"></i> Insira o texto do email </label>
+                    <textarea class="form-control border border-2 border-dark-subtle" rows="5" placeholder=" " id="emailTextArea" style="height: 150px;" ></textarea>
+                    <label for="emailTextArea" class="form-label"> <i class="bi bi-envelope"></i> Insira o texto do email </label>
                 </div>
 
                 <button class="btn btn-dark mb-3 my-4" onclick="analisarEmail()">
@@ -38,35 +39,38 @@
 
             </div>
         </section>
-        
-        <section class="container mb-5" style="display: none;" id="secaoResultadoAnalise">
-            <div id="resultadoAnalise" class="p-4 border border-2 border-dark rounded-3">
+
+        <!-- Container do Resultado da Análise -->
+        <section class="container mb-5" style="display: none;" id="sectionAnalysisResult">
+            <div id="analysisResult" class="p-4 border border-2 border-dark rounded-3">
                 <h5 class="mb-3"><i class="bi bi-graph-up"></i> Resultado da Análise</h6>
 
-                <div class="card mb-3 text-bg-danger" style="max-width: 150px;" id="cardProdutivo">
+                <!-- Card Improdutivo -->
+                <div class="card mb-3 text-bg-danger" style="max-width: 150px;" id="cardUnproductive">
                     <div class="card-body">
                         <i class="bi bi-x-circle"></i> Improdutivo
                     </div>
                 </div>
 
-                <div class="card mb-3 text-bg-success" style="max-width: 150px;" id="cardImprodutivo">
+                <!-- Card Produtivo -->
+                <div class="card mb-3 text-bg-success" style="max-width: 150px;" id="cardProductive">
                     <div class="card-body">
                         <i class="bi bi-check-circle"></i> Produtivo
                     </div>
                 </div>
 
+                <!-- Textarea com a Resposta Sugerida pela IA -->
                 <div class="form-floating">
-                    <textarea id="inputRespostaIA" type="text" class="form-control border border-2 border-dark-subtle"
-                    style="height: 150px;" rows="5" id="textAreaEmail" readonly value="Resposta gerada aleatoriamente pela ia"></textarea>
-                    <label for="textAreaEmail" class="form-label">Resposta sugerida: </label>
-                    <!-- botão de copiar o texto -->
+                    <textarea id="responseIA" class="form-control border border-2 border-dark-subtle"
+                    style="height: 150px;" rows="5" readonly></textarea>
+                    <label for="responseIA" class="form-label">Resposta sugerida: </label>
+
                     <button class="btn btn-outline-dark mt-2" onclick="copiarRespostaIA()" id="btn-copy">
                         <i class="bi bi-clipboard"></i> Copiar resposta
                     </button>
                 </div>
             </div>
         </section>
-        
     </main>
 
     <footer class="footer mt-auto py-3 bg-light text-center">

@@ -1,5 +1,3 @@
-emailText =document.getElementById('textAreaEmail').value
-
 async function analisarEmail() {
     // consultar na api
     await fetch('http://127.0.0.1:5000/analyze', {
@@ -8,7 +6,7 @@ async function analisarEmail() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            text: emailText
+            text: document.getElementById('emailTextArea').value
         })
     }) 
     .then(response => response.json())
@@ -16,19 +14,22 @@ async function analisarEmail() {
         const produtividade = data.category;
         const sugestaoResposta = data.suggested_reply;
 
-            if (produtividade === 'produtivo') {
-                document.getElementById('cardProdutivo').style.display = 'block';
-                document.getElementById('cardImprodutivo').style.display = 'none';
+        console.log(produtividade);
+        console.log(sugestaoResposta);
+
+            if (produtividade === 'Produtivo') {
+                document.getElementById('cardProductive').style.display = 'block';
+                document.getElementById('cardUnproductive').style.display = 'none';
             } else {
-                document.getElementById('cardProdutivo').style.display = 'none';
-                document.getElementById('cardImprodutivo').style.display = 'block';
+                document.getElementById('cardProductive').style.display = 'none';
+                document.getElementById('cardUnproductive').style.display = 'block';
             }
 
-            document.getElementById('inputRespostaIA').value = sugestaoResposta;
+            document.getElementById('responseIA').value = sugestaoResposta;
     });
 
-    document.getElementById('secaoResultadoAnalise').style.display = 'block';
-    document.getElementById('secaoResultadoAnalise').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('sectionAnalysisResult').style.display = 'block';
+    document.getElementById('sectionAnalysisResult').scrollIntoView({ behavior: 'smooth' });
  }
 
 window.onbeforeunload = function() {
