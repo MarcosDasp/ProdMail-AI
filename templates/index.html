@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="w-100 h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>ProdMail AI</title>
+</head>
+<body class="d-flex flex-column w-100 h-100">
+    
+    <header>
+        <div class="container text-center my-4">
+            <h3><i class="bi bi-stars"></i> <strong>PRODMAIL AI</strong></h3>
+        </div>
+    </header>  
+    
+    <main>
+        <section class="container">
+            <div class="p-4 border border-2 border-dark rounded-3 my-4">
+
+                <label for="emailFile" class="form-label">Upload do email (.txt ou .pdf)</label>
+                <input class="form-control border border-2 border-dark-subtle" type="file" name="file" accept=".txt,.pdf" id="emailFile"></input>
+            
+                <div class="text-center my-4">
+                    <h5>OU</h5>
+                </div>
+
+                <div class="form-floating">
+                    <textarea class="form-control border border-2 border-dark-subtle" rows="5" placeholder=" " id="textAreaEmail" style="height: 150px;" ></textarea>
+                    <label for="textAreaEmail" class="form-label"> <i class="bi bi-envelope"></i> Insira o texto do email </label>
+                </div>
+
+                <button class="btn btn-dark mb-3 my-4" onclick="analisarEmail()">
+                    Analisar email
+                </button>
+
+            </div>
+        </section>
+        
+        <section class="container mb-5" style="display: none;" id="secaoResultadoAnalise">
+            <div id="resultadoAnalise" class="p-4 border border-2 border-dark rounded-3">
+                <h5 class="mb-3"><i class="bi bi-graph-up"></i> Resultado da Análise</h6>
+
+                <div class="card mb-3 text-bg-danger" style="max-width: 150px;" id="cardProdutivo">
+                    <div class="card-body">
+                        <i class="bi bi-x-circle"></i> Improdutivo
+                    </div>
+                </div>
+
+                <div class="card mb-3 text-bg-success" style="max-width: 150px;" id="cardImprodutivo">
+                    <div class="card-body">
+                        <i class="bi bi-check-circle"></i> Produtivo
+                    </div>
+                </div>
+
+                <div class="form-floating">
+                    <textarea id="inputRespostaIA" type="text" class="form-control border border-2 border-dark-subtle"
+                    style="height: 150px;" rows="5" id="textAreaEmail" readonly value="Resposta gerada aleatoriamente pela ia"></textarea>
+                    <label for="textAreaEmail" class="form-label">Resposta sugerida: </label>
+                    <!-- botão de copiar o texto -->
+                    <button class="btn btn-outline-dark mt-2" onclick="copiarRespostaIA()" id="btn-copy">
+                        <i class="bi bi-clipboard"></i> Copiar resposta
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-light text-center">
+        <p>Desenvolvido por: <i class="bi bi-github"></i> <a href="https://github.com/MarcosDasp" target="_blank">MarcosDasp</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="../static/main.js"></script>
+</body>
+</html>
