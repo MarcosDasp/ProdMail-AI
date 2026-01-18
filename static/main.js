@@ -1,43 +1,87 @@
-async function analisarEmail() {
-    // consultar na api
-    await fetch('http://127.0.0.1:5000/analyze', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            text: document.getElementById('emailTextArea').value
-        })
-    }) 
-    .then(response => response.json())
-    .then(data => {
-        const produtividade = data.category;
-        const sugestaoResposta = data.suggested_reply;
+const cardUnproductive = document.getElementById('cardUnproductive');
+const cardProductive = document.getElementById('cardProductive');
+const cardError = document.getElementById('cardError');
+const loadingScreen = document.getElementById('loadingScreen');
+const sectionAnalysisResult = document.getElementById('sectionAnalysisResult');
+const responseIA = document.getElementById('responseIA');
 
-        console.log(produtividade);
-        console.log(sugestaoResposta);
+document.getElementById("emailForm").addEventListener("submit", async (e) => {
+e.preventDefault();
 
-            if (produtividade === 'Produtivo') {
-                document.getElementById('cardProductive').style.display = 'block';
-                document.getElementById('cardUnproductive').style.display = 'none';
-            } else {
-                document.getElementById('cardProductive').style.display = 'none';
-                document.getElementById('cardUnproductive').style.display = 'block';
-            }
+sectionAnalysisResult.style.display = 'none';
+loadingScreen.style.display = 'block';
+cardProductive.style.display = 'none';
+cardUnproductive.style.display = 'none';
+cardError.style.display = 'none';
 
-            document.getElementById('responseIA').value = sugestaoResposta;
+const formData = new FormData(e.target);
+
+// Se não tiver arquivo ou texto, mostrar erro dentro do modal
+
+const fileInput = document.getElementById('emailFile');
+const textInput = document.getElementById('emailTextArea');
+if (fileInput.files.length === 0 && textInput.value.trim() === "") {
+    document.getElementById('loadingScreen').style.setProperty('display', 'none', 'important');
+    const modalErro = document.getElementById('modalError')
+    const modal = new bootstrap.Modal(modalErro);
+    const textModal = document.getElementById('modalErrorText');
+    textModal.textContent = "Por favor, envie um arquivo ou insira o texto do email.";
+    modal.show();
+    return;
+}
+
+try {
+    const response = await fetch("/analyze", {
+    method: "POST",
+    body: formData
     });
 
-    document.getElementById('sectionAnalysisResult').style.display = 'block';
-    document.getElementById('sectionAnalysisResult').scrollIntoView({ behavior: 'smooth' });
- }
+    await response.json().then(data => {
+    const produtividade = data.category;
+    const sugestaoResposta = data.suggested_reply;
+
+    console.log(produtividade);
+    console.log(sugestaoResposta);
+
+    if (produtividade === undefined || sugestaoResposta === undefined) {
+        responseIA.value = "Erro: Resposta inválida do servidor. Tente novamente mais tarde.";
+
+        cardError.style.display = 'block';
+
+        loadingScreen.style.setProperty('display', 'none', 'important');
+        sectionAnalysisResult.style.display = 'block';
+        sectionAnalysisResult.scrollIntoView({ behavior: 'smooth' });   
+
+        throw new Error("Resposta inválida do servidor");
+    }
+
+    if (produtividade === 'Produtivo') {
+        cardProductive.style.display = 'block';
+    } else {
+        cardUnproductive.style.display = 'block';
+    }
+
+    responseIA.value = sugestaoResposta;
+    });
+
+    loadingScreen.style.setProperty('display', 'none', 'important');
+
+    sectionAnalysisResult.style.display = 'block';
+    sectionAnalysisResult.scrollIntoView({ behavior: 'smooth' });   
+
+} catch (error) {
+    console.error("Erro ao analisar o email:", error);
+    return
+}
+});
+
 
 window.onbeforeunload = function() {
     return "Tem certeza que deseja recarregar a página? Os resultados serão perdidos.";
 };
 
 function copiarRespostaIA() {
-    var respostaIA = document.getElementById('inputRespostaIA');
+    var respostaIA = document.getElementById('responseIA');
     respostaIA.select();
     respostaIA.setSelectionRange(0, 99999);
     document.execCommand('copy');

@@ -3,7 +3,9 @@ from transformers import pipeline
 classifier = pipeline(
     "text-classification",
     model="model",
-    tokenizer="model"
+    tokenizer="model",
+    truncation=True,
+    max_length=512
 )
 
 def classify_email(text):

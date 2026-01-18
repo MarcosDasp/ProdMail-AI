@@ -14,6 +14,14 @@ text,label
 "Minha conta foi bloqueada após várias tentativas de login.",1
 "Gostaria de atualizar o plano contratado. Como proceder?",1
 "Tenho dúvidas sobre as funcionalidades do módulo financeiro.",1
+"Preciso de ajuda",1
+"Pode me ajudar?",1
+"Estou com um problema",1
+"Necessito de suporte",1
+"Preciso de suporte técnico",1
+"Ajuda urgente",1
+"Suporte",1 
+
 
 "Obrigado pelo rápido atendimento!",0
 "Agradeço a atenção e o suporte prestado.",0
@@ -30,3 +38,7 @@ text,label
 "Mensagem enviada apenas para conhecimento.",0
 "Agradeço novamente pela atenção.",0
 "Sem mais, obrigado.",0
+"Obrigado",0
+"Bom dia",0
+"Agradeço a atenção",0
+"Mensagem recebida",0
