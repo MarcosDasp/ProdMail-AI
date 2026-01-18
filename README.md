@@ -149,7 +149,7 @@ python ai/train_classifier.py
 python app.py
 ```
 
-A aplicação estará disponível em:
+A aplicação normalmente estará disponível em:
 
 👉 **http://127.0.0.1:5000**
 
@@ -192,6 +192,7 @@ A resposta exibirá:
 
 
 Este projeto é destinado exclusivamente para fins educacionais e avaliação técnica.
+
 
 
 
