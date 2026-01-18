@@ -79,8 +79,8 @@ GEMINI_API_KEY=your_api_key_here
 ### 1️⃣ Clone o repositório
 
 ```bash
-git clone <url-do-repositorio>
-cd Projeto
+git clone https://github.com/MarcosDasp/ProdMail-AI.git
+cd ProdMail-AI
 ```
 
 ### 2️⃣ Crie e ative um ambiente virtual
@@ -178,3 +178,4 @@ A resposta exibirá:
 
 
 Este projeto é destinado exclusivamente para fins educacionais e avaliação técnica.
+
