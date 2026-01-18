@@ -62,32 +62,6 @@ Projeto/
 
 ---
 
-## 🔑 Configuração da API (Gemini)
-
-### Criar a API Key
-
-1. Acesse: https://aistudio.google.com/
-
-2. Faça login com Google
-
-3. Clique em Get API key
-
-4. Crie uma chave
-
-5. Copie a key
-
->  O Google possui um período de avaliação gratuita, onde será possível testar a aplicação. Porém é necessario cadastrar um cartão (sem cobranças durante o período do teste)
-
-6. Crie um arquivo **`.env`** na raiz do projeto com o seguinte conteúdo:
-
-```env
-GEMINI_API_KEY=your_api_key_here
-```
-
-> ⚠️ O arquivo `.env` não deve ser versionado. Ele já está listado no `.gitignore`.
-
----
-
 ## ▶️ Como executar o projeto localmente
 
 ### 1️⃣ Clone o repositório
@@ -120,6 +94,32 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+
+---
+
+## 🔑 Configuração da API (Gemini)
+
+### Criar a API Key
+
+1. Acesse: https://aistudio.google.com/
+
+2. Faça login com Google
+
+3. Clique em Get API key
+
+4. Crie uma chave
+
+5. Copie a key
+
+>  O Google possui um período de avaliação gratuita, onde será possível testar a aplicação. Porém é necessario cadastrar um cartão (sem cobranças durante o período do teste)
+
+6. Crie um arquivo **`.env`** na raiz do projeto com o seguinte conteúdo:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+> ⚠️ O arquivo `.env` não deve ser versionado.
 
 ---
 
@@ -192,5 +192,6 @@ A resposta exibirá:
 
 
 Este projeto é destinado exclusivamente para fins educacionais e avaliação técnica.
+
 
 
