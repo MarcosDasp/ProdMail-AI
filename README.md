@@ -123,6 +123,7 @@ O projeto já inclui:
 
 ```bash
 python ai/train_classifier.py
+```
 
 > Observação: o treinamento precisa ser executado apenas uma vez, a menos que o dataset seja alterado.
 
@@ -161,7 +162,7 @@ A resposta exibirá:
 - **Flask**
 - **Hugging Face Transformers**
 - **Google Gemini API**
-- **HTML5 / CSS3 / JavaScript**
+- **HTML5 / BootStrap / JavaScript**
 
 ---
 
@@ -174,5 +175,6 @@ A resposta exibirá:
 ---
 
 ## 📄 Licença
+
 
 Este projeto é destinado exclusivamente para fins educacionais e avaliação técnica.
